@@ -11,6 +11,7 @@ import ShowArchive from '../../page/archive/show';
 import Archive from '../../page/archive';
 import Applications from '../../page/applications';
 import ApplicationView from '../../page/applications/view';
+import ContextFields from '../../page/context';
 import LogoutFeatures from '../../page/user/logout';
 
 export const routes = [
@@ -41,6 +42,9 @@ export const routes = [
     // Applications
     { path: '/applications/:name', title: ':name', parent: '/applications', component: ApplicationView },
     { path: '/applications', title: 'Applications', icon: 'apps', component: Applications },
+
+    // Context
+    { path: '/context', title: 'Context Fields', icon: 'apps', component: ContextFields },
 
     { path: '/logout', title: 'Sign out', icon: 'exit_to_app', component: LogoutFeatures },
 ];
