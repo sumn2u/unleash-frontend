@@ -44,11 +44,13 @@ export const routes = [
     { path: '/applications', title: 'Applications', icon: 'apps', component: Applications },
 
     // Context
-    { path: '/context', title: 'Context Fields', icon: 'apps', component: ContextFields },
+    { path: '/context', title: 'Context Fields', icon: 'apps', component: ContextFields, hidden: true },
 
     { path: '/logout', title: 'Sign out', icon: 'exit_to_app', component: LogoutFeatures },
 ];
 
 export const getRoute = path => routes.find(route => route.path === path);
 
-export const baseRoutes = routes.filter(route => !route.parent);
+export const baseRoutes = routes
+    .filter(route => !route.hidden)
+    .filter(route => !route.parent);

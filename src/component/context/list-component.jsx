@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { List, ListItem, ListItemContent, IconButton, Card } from 'react-mdl';
+import { List, ListItem, ListItemAction, ListItemContent, Icon, IconButton, Card } from 'react-mdl';
 import { HeaderTitle, styles as commonStyles } from '../common';
-import { CREATE_STRATEGY, DELETE_STRATEGY } from '../../permissions';
+import { CREATE_CONTEXT_FIELD, DELETE_CONTEXT_FIELD } from '../../permissions';
 
 class ContextFieldListComponent extends Component {
     static propTypes = {
@@ -27,12 +27,12 @@ class ContextFieldListComponent extends Component {
                 <HeaderTitle
                     title="Context Fields"
                     actions={
-                        hasPermission(CREATE_STRATEGY) ? (
+                        hasPermission(CREATE_CONTEXT_FIELD) ? (
                             <IconButton
                                 raised
                                 name="add"
-                                onClick={() => this.props.history.push('/strategies/create')}
-                                title="Add new strategy"
+                                onClick={() => this.props.history.push('/context/create')}
+                                title="Add new context field"
                             />
                         ) : (
                             ''
@@ -43,11 +43,14 @@ class ContextFieldListComponent extends Component {
                     {contextFields.length > 0 ? (
                         contextFields.map((field, i) => (
                             <ListItem key={i} twoLine>
-                                <ListItemContent icon="extension">
+                                <ListItemContent icon="extension" subtitle={field.desription}>
                                     <Link to={`/context/view/${field.name}`}>
                                         <strong>{field.name}</strong>
                                     </Link>
                                 </ListItemContent>
+                                <ListItemAction>
+                                    <a href="#"><Icon name="delete" /></a>
+                                </ListItemAction>
                             </ListItem>
                         ))
                     ) : (
