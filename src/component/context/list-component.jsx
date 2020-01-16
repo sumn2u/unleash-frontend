@@ -49,7 +49,9 @@ class ContextFieldListComponent extends Component {
                                     </Link>
                                 </ListItemContent>
                                 <ListItemAction>
-                                    <a href="#"><Icon name="delete" /></a>
+                                    <a href="#">
+                                        <Icon name="delete" />
+                                    </a>
                                 </ListItemAction>
                             </ListItem>
                         ))

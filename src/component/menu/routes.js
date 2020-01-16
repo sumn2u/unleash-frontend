@@ -12,6 +12,7 @@ import Archive from '../../page/archive';
 import Applications from '../../page/applications';
 import ApplicationView from '../../page/applications/view';
 import ContextFields from '../../page/context';
+import CreateContextField from '../../page/context/create';
 import LogoutFeatures from '../../page/user/logout';
 
 export const routes = [
@@ -44,6 +45,7 @@ export const routes = [
     { path: '/applications', title: 'Applications', icon: 'apps', component: Applications },
 
     // Context
+    { path: '/context/create', parent: '/context', title: 'Create', component: CreateContextField },
     { path: '/context', title: 'Context Fields', icon: 'apps', component: ContextFields, hidden: true },
 
     { path: '/logout', title: 'Sign out', icon: 'exit_to_app', component: LogoutFeatures },
@@ -51,6 +53,4 @@ export const routes = [
 
 export const getRoute = path => routes.find(route => route.path === path);
 
-export const baseRoutes = routes
-    .filter(route => !route.hidden)
-    .filter(route => !route.parent);
+export const baseRoutes = routes.filter(route => !route.hidden).filter(route => !route.parent);

@@ -10,7 +10,6 @@ export const CREATE_CONTEXT_FIELD = 'CREATE_CONTEXT_FIELD';
 export const UPDATE_CONTEXT_FIELD = 'UPDATE_CONTEXT_FIELD';
 export const DELETE_CONTEXT_FIELD = 'DELETE_CONTEXT_FIELD';
 
-
 export function hasPermission(user, permission) {
     return (
         user &&

@@ -6,7 +6,6 @@ import { hasPermission } from '../../permissions';
 const mapStateToProps = state => {
     const list = state.context;
 
-
     return {
         contextFields: list,
         hasPermission: hasPermission.bind(null, state.user.get('profile')),
