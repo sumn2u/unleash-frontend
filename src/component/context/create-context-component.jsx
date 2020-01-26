@@ -53,18 +53,21 @@ class AddContextComponent extends Component {
                         <section style={{ padding: '16px', background: '#EFE' }}>
                             <h6 style={{ marginTop: '0' }}>Legal values</h6>
                             <p style={{ color: 'rgba(0,0,0,.54)' }}>
-                                Sometimes we know all legal values for a context field. A concrete example would be that we usually we
-                                know all values for our “environment” (local, development, stage, production). By defining the
-                                legal values the Unleash Admin UI will validate the user input.
+                                Sometimes we know all legal values for a context field. A concrete example would be that
+                                we usually we know all values for our “environment” (local, development, stage,
+                                production). By defining the legal values the Unleash Admin UI will validate the user
+                                input.
                             </p>
-                            <Textfield
-                                floatingLabel
-                                label="Legal value"
-                                name="value"
-                            />
+                            <Textfield floatingLabel label="Legal value" name="value" />
                             <Button>Add</Button>
                             <div>
-                                <Chip onClose={e => { alert('Close icon clicked!'); }}>local</Chip>
+                                <Chip
+                                    onClose={e => {
+                                        alert('Close icon clicked!');
+                                    }}
+                                >
+                                    local
+                                </Chip>
                             </div>
                         </section>
                     </section>
