@@ -19,8 +19,13 @@ class ContextFieldListComponent extends Component {
         // this.props.fetchStrategies();
     }
 
+    removeContextField = (contextField, evt) => {
+        evt.preventDefault();
+        this.props.removeContextField(contextField);
+    }
+
     render() {
-        const { contextFields, removeStrategy, hasPermission } = this.props;
+        const { contextFields, hasPermission } = this.props;
 
         return (
             <Card shadow={0} className={commonStyles.fullwidth} style={{ overflow: 'visible' }}>
@@ -49,7 +54,7 @@ class ContextFieldListComponent extends Component {
                                     </Link>
                                 </ListItemContent>
                                 <ListItemAction>
-                                    <a href="#">
+                                    <a href="#delete" title="Remove contextField" onClick={this.removeContextField.bind(this, field)}>
                                         <Icon name="delete" />
                                     </a>
                                 </ListItemAction>

@@ -9,17 +9,48 @@ import { styles as commonStyles } from '../common';
 class AddContextComponent extends Component {
     // static displayName = `AddContextComponent-${getDisplayName(Component)}`;
 
+    constructor() {
+        super();
+        this.state = {
+            contextField: { name: '', description: '', legalValues: [] },
+            errors: {},
+            dirty: false,
+        };
+    }
+
+    setValue = (field, value) => {
+        const { contextField } = this.state;
+        contextField[field] = value;
+        this.setState({ contextField, dirty: true });
+    };
+
+    validateName = async name => {
+        const { errors } = this.state;
+        try {
+            await validateName(name);
+            errors.name = undefined;
+        } catch (err) {
+            errors.name = err.message;
+        }
+
+        this.setState({ errors });
+    };
+
     onCancel = evt => {
         evt.preventDefault();
         this.props.history.push('/context');
     };
 
+    onSubmit = evt => {
+        evt.preventDefault();
+        this.props.createContextField({name: 'test'});
+        this.props.history.push('/context');
+    }
+
     render() {
         const input = {};
         const errors = {};
         const validateName = () => {};
-        const setValue = () => {};
-        const onSubmit = () => {};
 
         return (
             <Card shadow={0} className={commonStyles.fullwidth} style={{ overflow: 'visible' }}>
@@ -30,7 +61,7 @@ class AddContextComponent extends Component {
                     Context fields are a basic building block used in Unleash to control roll-out. Context fields can be
                     used together with strategy constraints as part of the activation strategy evaluation.
                 </CardText>
-                <form onSubmit={onSubmit}>
+                <form onSubmit={this.onSubmit}>
                     <section style={{ padding: '16px' }}>
                         <Textfield
                             floatingLabel
@@ -39,7 +70,7 @@ class AddContextComponent extends Component {
                             value={input.name}
                             error={errors.name}
                             onBlur={v => validateName(v.target.value)}
-                            onChange={v => setValue('name', trim(v.target.value))}
+                            onChange={v => this.setValue('name', trim(v.target.value))}
                         />
                         <Textfield
                             floatingLabel

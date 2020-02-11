@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import ContextFieldListComponent from './list-component.jsx';
-import { fetchStrategies, removeStrategy } from './../../store/strategy/actions';
+import { fetchContext, removeContextField } from './../../store/context/actions';
 import { hasPermission } from '../../permissions';
 
 const mapStateToProps = state => {
-    const list = state.context;
+    const list = state.context.toJS();
 
     return {
         contextFields: list,
@@ -13,13 +13,13 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    removeStrategy: strategy => {
+    removeContextField: contextField => {
         // eslint-disable-next-line no-alert
-        if (window.confirm('Are you sure you want to remove this strategy?')) {
-            removeStrategy(strategy)(dispatch);
+        if (window.confirm('Are you sure you want to remove this context field?')) {
+            removeContextField(contextField)(dispatch);
         }
     },
-    fetchStrategies: () => fetchStrategies()(dispatch),
+    fetchContext: () => fetchContext()(dispatch),
 });
 
 const ContextFieldListContainer = connect(

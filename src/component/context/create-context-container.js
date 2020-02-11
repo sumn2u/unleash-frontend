@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import AddContextComponent from './create-context-component';
+import { createContextField } from './../../store/context/actions';
 
 const mapDispatchToProps = dispatch => ({
     validateName: name => validateName(name)(dispatch),
-    createFeatureToggles: featureToggle => createFeatureToggles(featureToggle)(dispatch),
+    createContextField: contextField => createContextField(contextField)(dispatch),
 });
 
 const FormAddContainer = connect(

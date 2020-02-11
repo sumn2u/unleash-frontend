@@ -20,8 +20,7 @@ const updatedStrategy = strategy => ({ type: UPDATE_STRATEGY, strategy });
 
 const startRequest = () => ({ type: REQUEST_STRATEGIES });
 
-const receiveStrategies = json => ({
-    type: RECEIVE_STRATEGIES,
+const receiveStrategies = json => ({type: RECEIVE_STRATEGIES,
     value: json.strategies,
 });
 
